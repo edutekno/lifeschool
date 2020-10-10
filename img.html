@@ -22,8 +22,8 @@
         else if (myField.selectionStart || myField.selectionStart == '0'){  
             var startPos = myField.selectionStart; 
             var endPos = myField.selectionEnd; 
-            myField.value = myField.value.substring(0, startPos)+ myValue 
-                 + myField.value.substring(endPos, myField.value.length); 
+            myField.value = myField.value.substring(0, startPos)+  
+                 myField.value.substring(endPos, myField.value.length)+myValue; 
             } else { 
                 myField.value += myValue; 
             } 
@@ -33,8 +33,7 @@
  <body>
    Keyword:<input type="text" id="textToInsert" />
    <input type="button" id="btnInsertText" value="Insert Keyword" /><br/>
-   <textarea id="myTextArea" rows="6" cols="50">
-      https://source.unsplash.com/1600x900/?
+   <textarea id="myTextArea" rows="6" cols="50">https://source.unsplash.com/1600x900/?
    </textarea>
  </body>
  </html>
