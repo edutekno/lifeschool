@@ -1,0 +1,40 @@
+<html>
+ <head>
+  <title>Test Page</title>
+  <script type="text/javascript">
+    window.onload = function(){
+       btn = document.getElementById("btnInsertText");
+       myText = document.getElementById("myTextArea");
+       text = document.getElementById("textToInsert");
+       btn.onclick = function(){
+          insertAtCursor(myText, text.value);
+       }
+    }
+
+    function insertAtCursor(myField, myValue) { 
+        //IE support 
+        if (document.selection) { 
+            myField.focus(); 
+            sel = document.selection.createRange(); 
+            sel.text = myValue; 
+        }
+            //Mozilla/Firefox/Netscape 7+ support 
+        else if (myField.selectionStart || myField.selectionStart == '0'){  
+            var startPos = myField.selectionStart; 
+            var endPos = myField.selectionEnd; 
+            myField.value = myField.value.substring(0, startPos)+ myValue 
+                 + myField.value.substring(endPos, myField.value.length); 
+            } else { 
+                myField.value += myValue; 
+            } 
+        }       
+    </script>
+ </head>
+ <body>
+   Keyword:<input type="text" id="textToInsert" />
+   <input type="button" id="btnInsertText" value="Insert Keyword" /><br/>
+   <textarea id="myTextArea" rows="6" cols="50">
+      https://source.unsplash.com/1600x900/?
+   </textarea>
+ </body>
+ </html>
